@@ -81,14 +81,14 @@
 
 <meta name="description" content="Tornado剖析Q: 为什么解析的参数格式只有string，而无法区分出int背景：前端传参通过form，fe转发需要把form表单转成raw_body的json字符串，转发给gis的后端服务，gis后端服务里面报错发现fe转发中的传参中，数字和字符都是字符串，而kotlin类型无法string转interger所以报错，这里调研了一下能否看框架参数能否支持到默认转发时保留不同类型 类torna">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tornado接收参数只是string">
+<meta property="og:title" content="请求参数不支持数值">
 <meta property="og:url" content="http://yoursite.com/2019/09/06/tornado接收参数只是string/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Tornado剖析Q: 为什么解析的参数格式只有string，而无法区分出int背景：前端传参通过form，fe转发需要把form表单转成raw_body的json字符串，转发给gis的后端服务，gis后端服务里面报错发现fe转发中的传参中，数字和字符都是字符串，而kotlin类型无法string转interger所以报错，这里调研了一下能否看框架参数能否支持到默认转发时保留不同类型 类torna">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-06T07:29:24.993Z">
+<meta property="og:updated_time" content="2019-09-06T07:41:31.310Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tornado接收参数只是string">
+<meta name="twitter:title" content="请求参数不支持数值">
 <meta name="twitter:description" content="Tornado剖析Q: 为什么解析的参数格式只有string，而无法区分出int背景：前端传参通过form，fe转发需要把form表单转成raw_body的json字符串，转发给gis的后端服务，gis后端服务里面报错发现fe转发中的传参中，数字和字符都是字符串，而kotlin类型无法string转interger所以报错，这里调研了一下能否看框架参数能否支持到默认转发时保留不同类型 类torna">
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>tornado接收参数只是string | Hexo</title>
+  <title>请求参数不支持数值 | Hexo</title>
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tornado接收参数只是string</h1>
+          <h1 class="post-title" itemprop="name headline">请求参数不支持数值</h1>
         
 
         <div class="post-meta">
@@ -644,7 +644,7 @@
         var disqus_config = function () {
           this.page.url = 'http://yoursite.com/2019/09/06/tornado接收参数只是string/';
           this.page.identifier = '2019/09/06/tornado接收参数只是string/';
-          this.page.title = 'tornado接收参数只是string';
+          this.page.title = '请求参数不支持数值';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://tianhaotian.disqus.com/embed.js';
