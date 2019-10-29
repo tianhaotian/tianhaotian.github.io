@@ -86,16 +86,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="记录一次GIS上传报错问题排查现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错初步排查：通过报不存在的表名gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon去查PostGis发现确实没有这个表，但是查到了gisp_upload_c4a95ec8e8452135eb5">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029151727889.png">
-<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029151850991.png">
-<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029151937843.png">
-<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029152157183.png">
-<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029152728163.png">
-<meta property="og:updated_time" content="2019-10-29T07:42:48.879Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/29/postgis建表问题/image-20191029151727889.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/29/postgis建表问题/image-20191029151850991.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/29/postgis建表问题/image-20191029151937843.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/29/postgis建表问题/image-20191029152157183.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/29/postgis建表问题/image-20191029152728163.png">
+<meta property="og:updated_time" content="2019-10-29T13:16:49.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="记一次GIS数据上传到PostGis的问题">
 <meta name="twitter:description" content="记录一次GIS上传报错问题排查现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错初步排查：通过报不存在的表名gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon去查PostGis发现确实没有这个表，但是查到了gisp_upload_c4a95ec8e8452135eb5">
-<meta name="twitter:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029151727889.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/29/postgis建表问题/image-20191029151727889.png">
 
 
 
@@ -316,13 +316,13 @@
 
       
         <h3 id="记录一次GIS上传报错问题排查"><a href="#记录一次GIS上传报错问题排查" class="headerlink" title="记录一次GIS上传报错问题排查"></a>记录一次GIS上传报错问题排查</h3><h5 id="现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错"><a href="#现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错" class="headerlink" title="现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错"></a>现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错</h5><p><strong>初步排查</strong>：通过报不存在的表名gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon去查PostGis发现确实没有这个表，但是查到了gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411这张表，而对应名称是没有改多图层上面之前的命名规则（新的规则在表名后面加了_图层类型），于是怀疑业务逻辑中可能哪里没有改全，于是开始debug上传的业务代码</p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151727889.png" alt="image-20191029151727889"></p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151850991.png" alt="image-20191029151850991"></p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151937843.png" alt="image-20191029151937843"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029151727889.png" alt="image-20191029151727889"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029151850991.png" alt="image-20191029151850991"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029151937843.png" alt="image-20191029151937843"></p>
 <p>debug到了建表SQL，发现并没有问题，继续往下走，等execute完直接查库</p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029152157183.png" alt="image-20191029152157183"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029152157183.png" alt="image-20191029152157183"></p>
 <p>建表的SQL对了，但是表名确实不对，于是复制建表SQL在客户端直接执行</p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029152728163.png" alt="image-20191029152728163"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029152728163.png" alt="image-20191029152728163"></p>
 <p>发现是Postgre把表名给改了….问题找到了</p>
 <p><strong>定位并解决</strong></p>
 <p>PostgreSQL 表名有限制，长度为NAMEDATALEN（一般为64）</p>
@@ -451,7 +451,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

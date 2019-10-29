@@ -311,13 +311,13 @@
         
           
             <h3 id="记录一次GIS上传报错问题排查"><a href="#记录一次GIS上传报错问题排查" class="headerlink" title="记录一次GIS上传报错问题排查"></a>记录一次GIS上传报错问题排查</h3><h5 id="现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错"><a href="#现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错" class="headerlink" title="现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错"></a>现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错</h5><p><strong>初步排查</strong>：通过报不存在的表名gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon去查PostGis发现确实没有这个表，但是查到了gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411这张表，而对应名称是没有改多图层上面之前的命名规则（新的规则在表名后面加了_图层类型），于是怀疑业务逻辑中可能哪里没有改全，于是开始debug上传的业务代码</p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151727889.png" alt="image-20191029151727889"></p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151850991.png" alt="image-20191029151850991"></p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151937843.png" alt="image-20191029151937843"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029151727889.png" alt="image-20191029151727889"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029151850991.png" alt="image-20191029151850991"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029151937843.png" alt="image-20191029151937843"></p>
 <p>debug到了建表SQL，发现并没有问题，继续往下走，等execute完直接查库</p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029152157183.png" alt="image-20191029152157183"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029152157183.png" alt="image-20191029152157183"></p>
 <p>建表的SQL对了，但是表名确实不对，于是复制建表SQL在客户端直接执行</p>
-<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029152728163.png" alt="image-20191029152728163"></p>
+<p><img src="/2019/10/29/postgis建表问题/image-20191029152728163.png" alt="image-20191029152728163"></p>
 <p>发现是Postgre把表名给改了….问题找到了</p>
 <p><strong>定位并解决</strong></p>
 <p>PostgreSQL 表名有限制，长度为NAMEDATALEN（一般为64）</p>
@@ -789,185 +789,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/resume/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Frodle Tim">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/20/resume/" itemprop="url">个人简历</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T20:10:33+08:00">
-                2019-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/20/resume/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/resume/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
-<li>田昊天/男/1994 </li>
-<li><p>职位：后端开发</p>
-<h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1></li>
-</ul>
-<ul>
-<li>熟练掌握Python中的多进程，多线程，协程，异步等开发方式，熟悉Tornado, Flask等Web框架，熟悉Gevent, Celery等常用第三方库</li>
-<li>熟悉数据结构算法和常用设计模式</li>
-<li>熟悉Linux开发环境，熟悉消息队列和基本的订阅/发布模式，熟悉nginx-server，了解RPC微服务架构</li>
-<li>熟悉MySQL关系型数据库，熟悉SQL语句，存储引擎，索引和事务，了解SQL调优，索引优化和分库分表</li>
-<li>熟悉Redis，MongoDB等数据库，具备不同业务场景下选择数据库的能力</li>
-<li>熟悉Hadoop、Spark和Hive，有Hive UDF的设计和开发经验</li>
-<li>有BI产品的开发经验，对数据接入，ETL建模，OLAP有实际开发经验和独立设计能力</li>
-<li>具备完善系统和独立维护多个模块的经验，对接并设计过系统平台的单点登录的方案，有良好的CodeReview习惯</li>
-</ul>
-<h1 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h1><h3 id="大连理工大学（2013年9月-2017年6月）"><a href="#大连理工大学（2013年9月-2017年6月）" class="headerlink" title="大连理工大学（2013年9月~2017年6月）"></a>大连理工大学（2013年9月~2017年6月）</h3><ul>
-<li>本科专业：网络工程</li>
-</ul>
-<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><h3 id="海致网络技术有限公司-（2017年7月-至今）"><a href="#海致网络技术有限公司-（2017年7月-至今）" class="headerlink" title="海致网络技术有限公司 （2017年7月 ~ 至今）"></a>海致网络技术有限公司 （2017年7月 ~ 至今）</h3><p>负责BI数据平台Saas产品数据分析和处理功能的开发和维护</p>
-<h1 id="项目经历"><a href="#项目经历" class="headerlink" title="项目经历"></a>项目经历</h1><h3 id="可视化需求"><a href="#可视化需求" class="headerlink" title="可视化需求"></a>可视化需求</h3><p><strong>项目描述</strong><br>大数据平台可视化产品相关的需求开发</p>
-<p><strong>工作描述</strong></p>
-<ol>
-<li>开发支持新图表类型（Unity-3D图表、智能报告、飞线世界地图等等）</li>
-<li>开发支持新的查询计算需求（表格分类汇总支持基于聚合结果的筛选、预警支持基于预警条件查询的计算等等）</li>
-<li>仪表盘相关权限控制的开发和其他业务优化</li>
-</ol>
-<p><strong>技术要点</strong></p>
-<ol>
-<li>基于SQL临时表结构的业务查询设计</li>
-<li>Tornado Web框架处理请求，实现后端API接口</li>
-<li>开发Hive UDF，UDAF支持自定义函数参与业务查询 </li>
-<li>分析和优化业务接口性能，优化业务MySQL的查询和表设计等等</li>
-</ol>
-<h3 id="数据建模"><a href="#数据建模" class="headerlink" title="数据建模"></a>数据建模</h3><p><strong>项目描述</strong><br>大数据平台ETL的产品</p>
-<p><strong>工作描述</strong></p>
-<ol>
-<li>设计和实现模型和多种算子逻辑和存储实体</li>
-<li>实现多种算子的业务交互</li>
-<li>模型和结果算子的权限控制</li>
-</ol>
-<p><strong>技术要点</strong></p>
-<ol>
-<li>Tornado Web框架处理请求，实现后端API接口</li>
-<li>算子多层级的可序列化的数据结构以及模型SQL翻译</li>
-<li>统一用户中心权限控制和多级文件夹结构优化设计</li>
-<li>模型更新机制使用WebSocket推送状态</li>
-</ol>
-<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul>
-<li>Email：<a href="mailto:frodle.ht@gmail.com" target="_blank" rel="noopener">frodle.ht@gmail.com</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/02/gdb调试运行中进程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1159,7 +980,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
