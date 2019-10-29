@@ -79,17 +79,23 @@
 
 
 
-<meta name="description" content="个人信息 田昊天/男/1994  职位：后端开发 技能清单   熟练掌握Python中的多进程，多线程，协程，异步等开发方式，熟悉Tornado, Flask等Web框架，熟悉Gevent, Celery等常用第三方库 熟悉数据结构算法和常用设计模式 熟悉Linux开发环境，熟悉消息队列和基本的订阅/发布模式，熟悉nginx-server，了解RPC微服务架构 熟悉MySQL关系型数据库，熟悉SQ">
+<meta name="description" content="记录一次GIS上传报错问题排查现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错初步排查：通过报不存在的表名gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon去查PostGis发现确实没有这个表，但是查到了gisp_upload_c4a95ec8e8452135eb5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人简历">
-<meta property="og:url" content="http://yoursite.com/2019/03/20/resume/index.html">
+<meta property="og:title" content="记一次GIS数据上传到PostGis的问题">
+<meta property="og:url" content="http://yoursite.com/2019/10/29/postgis建表问题/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="个人信息 田昊天/男/1994  职位：后端开发 技能清单   熟练掌握Python中的多进程，多线程，协程，异步等开发方式，熟悉Tornado, Flask等Web框架，熟悉Gevent, Celery等常用第三方库 熟悉数据结构算法和常用设计模式 熟悉Linux开发环境，熟悉消息队列和基本的订阅/发布模式，熟悉nginx-server，了解RPC微服务架构 熟悉MySQL关系型数据库，熟悉SQ">
+<meta property="og:description" content="记录一次GIS上传报错问题排查现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错初步排查：通过报不存在的表名gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon去查PostGis发现确实没有这个表，但是查到了gisp_upload_c4a95ec8e8452135eb5">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-06T07:03:40.065Z">
+<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029151727889.png">
+<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029151850991.png">
+<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029151937843.png">
+<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029152157183.png">
+<meta property="og:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029152728163.png">
+<meta property="og:updated_time" content="2019-10-29T07:42:48.879Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人简历">
-<meta name="twitter:description" content="个人信息 田昊天/男/1994  职位：后端开发 技能清单   熟练掌握Python中的多进程，多线程，协程，异步等开发方式，熟悉Tornado, Flask等Web框架，熟悉Gevent, Celery等常用第三方库 熟悉数据结构算法和常用设计模式 熟悉Linux开发环境，熟悉消息队列和基本的订阅/发布模式，熟悉nginx-server，了解RPC微服务架构 熟悉MySQL关系型数据库，熟悉SQ">
+<meta name="twitter:title" content="记一次GIS数据上传到PostGis的问题">
+<meta name="twitter:description" content="记录一次GIS上传报错问题排查现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错初步排查：通过报不存在的表名gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon去查PostGis发现确实没有这个表，但是查到了gisp_upload_c4a95ec8e8452135eb5">
+<meta name="twitter:image" content="http://yoursite.com/Users/frodle/Library/Application%20Support/typora-user-images/image-20191029151727889.png">
 
 
 
@@ -119,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/20/resume/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/29/postgis建表问题/">
 
 
 
 
 
-  <title>个人简历 | Hexo</title>
+  <title>记一次GIS数据上传到PostGis的问题 | Hexo</title>
   
 
 
@@ -232,7 +238,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/20/resume/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/postgis建表问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Frodle Tim">
@@ -249,7 +255,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">个人简历</h1>
+          <h1 class="post-title" itemprop="name headline">记一次GIS数据上传到PostGis的问题</h1>
         
 
         <div class="post-meta">
@@ -261,8 +267,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-20T20:10:33+08:00">
-                2019-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T15:39:59+08:00">
+                2019-10-29
               </time>
             
 
@@ -280,8 +286,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/03/20/resume/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/20/resume/" itemprop="commentCount"></span>
+                <a href="/2019/10/29/postgis建表问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/29/postgis建表问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -309,56 +315,23 @@
       
 
       
-        <h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1><ul>
-<li>田昊天/男/1994 </li>
-<li><p>职位：后端开发</p>
-<h1 id="技能清单"><a href="#技能清单" class="headerlink" title="技能清单"></a>技能清单</h1></li>
-</ul>
-<ul>
-<li>熟练掌握Python中的多进程，多线程，协程，异步等开发方式，熟悉Tornado, Flask等Web框架，熟悉Gevent, Celery等常用第三方库</li>
-<li>熟悉数据结构算法和常用设计模式</li>
-<li>熟悉Linux开发环境，熟悉消息队列和基本的订阅/发布模式，熟悉nginx-server，了解RPC微服务架构</li>
-<li>熟悉MySQL关系型数据库，熟悉SQL语句，存储引擎，索引和事务，了解SQL调优，索引优化和分库分表</li>
-<li>熟悉Redis，MongoDB等数据库，具备不同业务场景下选择数据库的能力</li>
-<li>熟悉Hadoop、Spark和Hive，有Hive UDF的设计和开发经验</li>
-<li>有BI产品的开发经验，对数据接入，ETL建模，OLAP有实际开发经验和独立设计能力</li>
-<li>具备完善系统和独立维护多个模块的经验，对接并设计过系统平台的单点登录的方案，有良好的CodeReview习惯</li>
-</ul>
-<h1 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h1><h3 id="大连理工大学（2013年9月-2017年6月）"><a href="#大连理工大学（2013年9月-2017年6月）" class="headerlink" title="大连理工大学（2013年9月~2017年6月）"></a>大连理工大学（2013年9月~2017年6月）</h3><ul>
-<li>本科专业：网络工程</li>
-</ul>
-<h1 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h1><h3 id="海致网络技术有限公司-（2017年7月-至今）"><a href="#海致网络技术有限公司-（2017年7月-至今）" class="headerlink" title="海致网络技术有限公司 （2017年7月 ~ 至今）"></a>海致网络技术有限公司 （2017年7月 ~ 至今）</h3><p>负责BI数据平台Saas产品数据分析和处理功能的开发和维护</p>
-<h1 id="项目经历"><a href="#项目经历" class="headerlink" title="项目经历"></a>项目经历</h1><h3 id="可视化需求"><a href="#可视化需求" class="headerlink" title="可视化需求"></a>可视化需求</h3><p><strong>项目描述</strong><br>大数据平台可视化产品相关的需求开发</p>
-<p><strong>工作描述</strong></p>
-<ol>
-<li>开发支持新图表类型（Unity-3D图表、智能报告、飞线世界地图等等）</li>
-<li>开发支持新的查询计算需求（表格分类汇总支持基于聚合结果的筛选、预警支持基于预警条件查询的计算等等）</li>
-<li>仪表盘相关权限控制的开发和其他业务优化</li>
-</ol>
-<p><strong>技术要点</strong></p>
-<ol>
-<li>基于SQL临时表结构的业务查询设计</li>
-<li>Tornado Web框架处理请求，实现后端API接口</li>
-<li>开发Hive UDF，UDAF支持自定义函数参与业务查询 </li>
-<li>分析和优化业务接口性能，优化业务MySQL的查询和表设计等等</li>
-</ol>
-<h3 id="数据建模"><a href="#数据建模" class="headerlink" title="数据建模"></a>数据建模</h3><p><strong>项目描述</strong><br>大数据平台ETL的产品</p>
-<p><strong>工作描述</strong></p>
-<ol>
-<li>设计和实现模型和多种算子逻辑和存储实体</li>
-<li>实现多种算子的业务交互</li>
-<li>模型和结果算子的权限控制</li>
-</ol>
-<p><strong>技术要点</strong></p>
-<ol>
-<li>Tornado Web框架处理请求，实现后端API接口</li>
-<li>算子多层级的可序列化的数据结构以及模型SQL翻译</li>
-<li>统一用户中心权限控制和多级文件夹结构优化设计</li>
-<li>模型更新机制使用WebSocket推送状态</li>
-</ol>
-<h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul>
-<li>Email：<a href="mailto:frodle.ht@gmail.com" target="_blank" rel="noopener">frodle.ht@gmail.com</a></li>
-</ul>
+        <h3 id="记录一次GIS上传报错问题排查"><a href="#记录一次GIS上传报错问题排查" class="headerlink" title="记录一次GIS上传报错问题排查"></a>记录一次GIS上传报错问题排查</h3><h5 id="现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错"><a href="#现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错" class="headerlink" title="现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错"></a>现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错</h5><p><strong>初步排查</strong>：通过报不存在的表名gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon去查PostGis发现确实没有这个表，但是查到了gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411这张表，而对应名称是没有改多图层上面之前的命名规则（新的规则在表名后面加了_图层类型），于是怀疑业务逻辑中可能哪里没有改全，于是开始debug上传的业务代码</p>
+<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151727889.png" alt="image-20191029151727889"></p>
+<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151850991.png" alt="image-20191029151850991"></p>
+<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029151937843.png" alt="image-20191029151937843"></p>
+<p>debug到了建表SQL，发现并没有问题，继续往下走，等execute完直接查库</p>
+<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029152157183.png" alt="image-20191029152157183"></p>
+<p>建表的SQL对了，但是表名确实不对，于是复制建表SQL在客户端直接执行</p>
+<p><img src="/Users/frodle/Library/Application Support/typora-user-images/image-20191029152728163.png" alt="image-20191029152728163"></p>
+<p>发现是Postgre把表名给改了….问题找到了</p>
+<p><strong>定位并解决</strong></p>
+<p>PostgreSQL 表名有限制，长度为NAMEDATALEN（一般为64）</p>
+<p>The system uses no more than NAMEDATALEN-1 characters of an identifier; longer names can be written in commands, but they will be truncated. By default, NAMEDATALEN is 64 so the maximum identifier length is 63 (but at the time PostgreSQL is built, NAMEDATALEN can be changed in src/include/postgres_ext.h).</p>
+<p>From <a href="https://www.postgresql.org/docs/7.3/sql-syntax.html" target="_blank" rel="noopener">https://www.postgresql.org/docs/7.3/sql-syntax.html</a></p>
+<p><strong>注意执行SQL时，Postgre不会报错！！！但是会报出Notice，然后执行truncated后的SQL</strong><br>NOTICE:  identifier “gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411_polygon” will be truncated to “gisp_upload_c4a95ec8e8452135eb5a5ba7e6487585_1572330097034_5411”</p>
+<p>旧的表命名规则：gisp_upload_32位用户id_13位时间戳_4位随机数，总位数刚好是63（64-1长度）…..新的规则又在基础上加了6~12位不等，超过了最大长度会只保留到最大长度位</p>
+<p>最终修改命名规则：</p>
+<p>gisp_upload_16位用户id_10位时间戳_4位随机数_10位内的点线面标识，最大长度55位</p>
 
       
     </div>
@@ -383,8 +356,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/02/gdb调试运行中进程/" rel="next" title="gdb调试运行中进程">
-                <i class="fa fa-chevron-left"></i> gdb调试运行中进程
+              <a href="/2019/09/06/tornado接收参数只是string/" rel="next" title="请求参数不支持数值">
+                <i class="fa fa-chevron-left"></i> 请求参数不支持数值
               </a>
             
           </div>
@@ -392,10 +365,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/29/problem-0522/" rel="prev" title="记录一次需求开发的坑（表格列总计新增计算方式）">
-                记录一次需求开发的坑（表格列总计新增计算方式） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -519,7 +488,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#个人信息"><span class="nav-number">1.</span> <span class="nav-text">个人信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#技能清单"><span class="nav-number">2.</span> <span class="nav-text">技能清单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#教育经历"><span class="nav-number">3.</span> <span class="nav-text">教育经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#大连理工大学（2013年9月-2017年6月）"><span class="nav-number">3.0.1.</span> <span class="nav-text">大连理工大学（2013年9月~2017年6月）</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#工作经历"><span class="nav-number">4.</span> <span class="nav-text">工作经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#海致网络技术有限公司-（2017年7月-至今）"><span class="nav-number">4.0.1.</span> <span class="nav-text">海致网络技术有限公司 （2017年7月 ~ 至今）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目经历"><span class="nav-number">5.</span> <span class="nav-text">项目经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化需求"><span class="nav-number">5.0.1.</span> <span class="nav-text">可视化需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据建模"><span class="nav-number">5.0.2.</span> <span class="nav-text">数据建模</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#联系方式"><span class="nav-number">6.</span> <span class="nav-text">联系方式</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#记录一次GIS上传报错问题排查"><span class="nav-number">1.</span> <span class="nav-text">记录一次GIS上传报错问题排查</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错"><span class="nav-number">1.0.1.</span> <span class="nav-text">现象：上传卡在了PostGis建完表写数据时，会报表找不到，然后报错，实际建表时并没有报错</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -689,9 +658,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/03/20/resume/';
-          this.page.identifier = '2019/03/20/resume/';
-          this.page.title = '个人简历';
+          this.page.url = 'http://yoursite.com/2019/10/29/postgis建表问题/';
+          this.page.identifier = '2019/10/29/postgis建表问题/';
+          this.page.title = '记一次GIS数据上传到PostGis的问题';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://tianhaotian.disqus.com/embed.js';
