@@ -229,6 +229,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="frodle">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/30/geojson使用geotools读取多类型geometry/" itemprop="url">FeatureCollection读取多类型geometry</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-30T19:03:31+08:00">
+                2019-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/30/geojson使用geotools读取多类型geometry/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/30/geojson使用geotools读取多类型geometry/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Geotools中的FeatureCollection支持多类型的Geometry"><a href="#Geotools中的FeatureCollection支持多类型的Geometry" class="headerlink" title="Geotools中的FeatureCollection支持多类型的Geometry"></a>Geotools中的FeatureCollection支持多类型的Geometry</h3><p><strong>原读取geojson数据并写入PostGis的逻辑</strong></p>
+<p><img src="/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030131734245.png" alt="image-20191030131734245"></p>
+<p><strong>原逻辑不支持多类型Geometry的原因</strong></p>
+<p>SimpleFeatureTypeBuilder维护了每一个feature中的属性和状态，Geotools文档（<a href="http://docs.geotools.org/stable/javadocs/org/geotools/feature/simple/SimpleFeatureTypeBuilder.html）中有描述" target="_blank" rel="noopener">http://docs.geotools.org/stable/javadocs/org/geotools/feature/simple/SimpleFeatureTypeBuilder.html）中有描述</a></p>
+<p>A default geometry for the feature type can be specified explictly via <a href="http://docs.geotools.org/stable/javadocs/org/geotools/feature/simple/SimpleFeatureTypeBuilder.html#setDefaultGeometry-java.lang.String-" target="_blank" rel="noopener"><code>setDefaultGeometry(String)</code></a>. However if one is not set the first geometric attribute (<a href="http://docs.geotools.org/stable/javadocs/org/opengis/feature/type/GeometryType.html" target="_blank" rel="noopener"><code>GeometryType</code></a>) added will be resulting default. So if only specifying a single geometry for the type there is no need to call the method. However if specifying multiple geometries then it is good practice to specify the name of the default geometry type.</p>
+<p>如果没有指定feature-type的geometry类型，则会取第一个feature的类型作为整个collection的geometry类型，其他类型则会被转换。因此代码里面判断geometry是点线面类型并不能生效，而且PostGis做数据源时，单表只能表示一个图层，如果要拆分点线面图层，则需要对应多个PostGis表，这就需要对collection中的featrue做拆分</p>
+<p><strong>实现方案</strong></p>
+<p>官方文档中给出的支持不同类型的geometry实质上是通过制定多个类型的properties来实现的，然而我们想要的是能不能把默认geometry的property支持不同类型的对象，SimpleFeatureTypeBuilder中的setDefaultGeometry可以修改默认的geometry属性，而add可以添加新的属性，remove可以删除已有属性，所以这里猜想可以通过先remove再add属性的方式，来修改一个字段的类型，然后最后设置geometry的属性字段，因为所有的geometry类型的对象类都继承自org.locationtech.jts.geom.Geometry这个抽象类，我们把默认的geometry属性的类型修改为这个抽象类的类型，就可以避免自动转换，然后再区分出点线面后，拆分出三个FeatureCollection来分别创建PostGis表，达到拆分图层的目的</p>
+<p><img src="/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030142404119.png" alt="image-20191030142404119"></p>
+<p>最终写入PostGis的表</p>
+<p><img src="/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030142731337.png" alt="image-20191030142731337"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/postgis建表问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -980,7 +1120,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

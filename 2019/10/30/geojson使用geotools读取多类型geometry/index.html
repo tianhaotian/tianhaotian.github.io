@@ -79,17 +79,21 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="Geotools中的FeatureCollection支持多类型的Geometry原读取geojson数据并写入PostGis的逻辑  原逻辑不支持多类型Geometry的原因 SimpleFeatureTypeBuilder维护了每一个feature中的属性和状态，Geotools文档（http://docs.geotools.org/stable/javadocs/org/geotools/f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/09/06/hello-world/index.html">
+<meta property="og:title" content="FeatureCollection读取多类型geometry">
+<meta property="og:url" content="http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/index.html">
 <meta property="og:site_name" content="blogs">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Geotools中的FeatureCollection支持多类型的Geometry原读取geojson数据并写入PostGis的逻辑  原逻辑不支持多类型Geometry的原因 SimpleFeatureTypeBuilder维护了每一个feature中的属性和状态，Geotools文档（http://docs.geotools.org/stable/javadocs/org/geotools/f">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-06T07:03:40.065Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030131734245.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030142404119.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030142731337.png">
+<meta property="og:updated_time" content="2019-10-30T11:06:11.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="FeatureCollection读取多类型geometry">
+<meta name="twitter:description" content="Geotools中的FeatureCollection支持多类型的Geometry原读取geojson数据并写入PostGis的逻辑  原逻辑不支持多类型Geometry的原因 SimpleFeatureTypeBuilder维护了每一个feature中的属性和状态，Geotools文档（http://docs.geotools.org/stable/javadocs/org/geotools/f">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030131734245.png">
 
 
 
@@ -119,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/06/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/">
 
 
 
 
 
-  <title>Hello World | blogs</title>
+  <title>FeatureCollection读取多类型geometry | blogs</title>
   
 
 
@@ -232,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="frodle">
@@ -249,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">FeatureCollection读取多类型geometry</h1>
         
 
         <div class="post-meta">
@@ -261,8 +265,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-06T15:03:40+08:00">
-                2019-09-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-30T19:03:31+08:00">
+                2019-10-30
               </time>
             
 
@@ -280,8 +284,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/06/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/06/hello-world/" itemprop="commentCount"></span>
+                <a href="/2019/10/30/geojson使用geotools读取多类型geometry/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/30/geojson使用geotools读取多类型geometry/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -309,15 +313,17 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h3 id="Geotools中的FeatureCollection支持多类型的Geometry"><a href="#Geotools中的FeatureCollection支持多类型的Geometry" class="headerlink" title="Geotools中的FeatureCollection支持多类型的Geometry"></a>Geotools中的FeatureCollection支持多类型的Geometry</h3><p><strong>原读取geojson数据并写入PostGis的逻辑</strong></p>
+<p><img src="/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030131734245.png" alt="image-20191030131734245"></p>
+<p><strong>原逻辑不支持多类型Geometry的原因</strong></p>
+<p>SimpleFeatureTypeBuilder维护了每一个feature中的属性和状态，Geotools文档（<a href="http://docs.geotools.org/stable/javadocs/org/geotools/feature/simple/SimpleFeatureTypeBuilder.html）中有描述" target="_blank" rel="noopener">http://docs.geotools.org/stable/javadocs/org/geotools/feature/simple/SimpleFeatureTypeBuilder.html）中有描述</a></p>
+<p>A default geometry for the feature type can be specified explictly via <a href="http://docs.geotools.org/stable/javadocs/org/geotools/feature/simple/SimpleFeatureTypeBuilder.html#setDefaultGeometry-java.lang.String-" target="_blank" rel="noopener"><code>setDefaultGeometry(String)</code></a>. However if one is not set the first geometric attribute (<a href="http://docs.geotools.org/stable/javadocs/org/opengis/feature/type/GeometryType.html" target="_blank" rel="noopener"><code>GeometryType</code></a>) added will be resulting default. So if only specifying a single geometry for the type there is no need to call the method. However if specifying multiple geometries then it is good practice to specify the name of the default geometry type.</p>
+<p>如果没有指定feature-type的geometry类型，则会取第一个feature的类型作为整个collection的geometry类型，其他类型则会被转换。因此代码里面判断geometry是点线面类型并不能生效，而且PostGis做数据源时，单表只能表示一个图层，如果要拆分点线面图层，则需要对应多个PostGis表，这就需要对collection中的featrue做拆分</p>
+<p><strong>实现方案</strong></p>
+<p>官方文档中给出的支持不同类型的geometry实质上是通过制定多个类型的properties来实现的，然而我们想要的是能不能把默认geometry的property支持不同类型的对象，SimpleFeatureTypeBuilder中的setDefaultGeometry可以修改默认的geometry属性，而add可以添加新的属性，remove可以删除已有属性，所以这里猜想可以通过先remove再add属性的方式，来修改一个字段的类型，然后最后设置geometry的属性字段，因为所有的geometry类型的对象类都继承自org.locationtech.jts.geom.Geometry这个抽象类，我们把默认的geometry属性的类型修改为这个抽象类的类型，就可以避免自动转换，然后再区分出点线面后，拆分出三个FeatureCollection来分别创建PostGis表，达到拆分图层的目的</p>
+<p><img src="/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030142404119.png" alt="image-20191030142404119"></p>
+<p>最终写入PostGis的表</p>
+<p><img src="/2019/10/30/geojson使用geotools读取多类型geometry/image-20191030142731337.png" alt="image-20191030142731337"></p>
 
       
     </div>
@@ -342,8 +348,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/29/problem-0522/" rel="next" title="记录一次需求开发的坑（表格列总计新增计算方式）">
-                <i class="fa fa-chevron-left"></i> 记录一次需求开发的坑（表格列总计新增计算方式）
+              <a href="/2019/10/29/postgis建表问题/" rel="next" title="记一次GIS数据上传到PostGis的问题">
+                <i class="fa fa-chevron-left"></i> 记一次GIS数据上传到PostGis的问题
               </a>
             
           </div>
@@ -351,10 +357,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/06/tornado接收参数只是string/" rel="prev" title="请求参数不支持数值">
-                请求参数不支持数值 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -478,7 +480,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Geotools中的FeatureCollection支持多类型的Geometry"><span class="nav-number">1.</span> <span class="nav-text">Geotools中的FeatureCollection支持多类型的Geometry</span></a></li></ol></div>
             
 
           </div>
@@ -648,9 +650,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/09/06/hello-world/';
-          this.page.identifier = '2019/09/06/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'http://yoursite.com/2019/10/30/geojson使用geotools读取多类型geometry/';
+          this.page.identifier = '2019/10/30/geojson使用geotools读取多类型geometry/';
+          this.page.title = 'FeatureCollection读取多类型geometry';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://tianhaotian.disqus.com/embed.js';
